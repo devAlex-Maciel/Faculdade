@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+    <link rel="stylesheet" href="/static/styles.css">
+
+</head>
+<body>
+    <h1>Vitrine de Produtos</h1>
+    <a href="/carrinho">Ver Carrinho ({{ carrinho | length }} itens)</a>
+    <ul>
+        {% for produto in produtos %}
+        <li>
+            <h2>{{ produto.nome }}</h2>
+            <p>{{ produto.descricao }}</p>
+            <p>Preço: R$ {{ produto.preco }}</p>
+            <a href="/adicionar_ao_carrinho/{{ produto.id }}">Adicionar ao Carrinho</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

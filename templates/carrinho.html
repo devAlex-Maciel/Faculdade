@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho</title>
+    <link rel="stylesheet" href="/static/styles.css">
+
+</head>
+<body>
+    <h1>Seu Carrinho</h1>
+    <a href="/produtos">Voltar à Vitrine</a>
+    <ul>
+        {% for item in carrinho %}
+        <li>
+            <h2>{{ item.nome }}</h2>
+            <p>Preço: R$ {{ item.preco }}</p>
+            <p>Quantidade: {{ item.quantidade }}</p>
+            <a href="/remover_do_carrinho/{{ item.id }}">Remover</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <h3>Total: R$ {{ total }}</h3>
+
+    {% if carrinho %}
+    <form action="/finalizar_pedido" method="post">
+        <button type="submit">Finalizar Pedido</button>
+    </form>
+    {% else %}
+    <p>Seu carrinho está vazio!</p>
+    {% endif %}
+</body>
+</html>
